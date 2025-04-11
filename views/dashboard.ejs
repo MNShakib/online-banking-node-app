@@ -1,0 +1,27 @@
+<!-- views/dashboard.ejs -->
+<h1 class="text-3xl font-bold mb-4">Hello, <%= user.name %>!</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <!-- Account Overview Card -->
+  <div class="bg-white p-4 rounded shadow">
+    <h2 class="text-xl font-semibold mb-2">Account Overview</h2>
+    <p><strong>Account Number:</strong> <%= user.accountNumber %></p>
+    <p><strong>Balance:</strong> ₹<%= user.balance.toFixed(2) %></p>
+    <a href="/user/account-summary" class="text-blue-600 hover:underline">View Account Summary</a>
+  </div>
+  <!-- Recent Transactions Card -->
+  <div class="bg-white p-4 rounded shadow">
+    <h2 class="text-xl font-semibold mb-2">Recent Transactions</h2>
+    <% if (recentTxns && recentTxns.length > 0) { %>
+      <ul>
+      <% recentTxns.forEach(txn => { %>
+        <li class="mb-1">
+          <%= txn.date.toLocaleDateString() %> - Transferred ₹<%= txn.amount %> to <%= txn.toAccount %> via <%= txn.mode %>
+        </li>
+      <% }) %>
+      </ul>
+      <a href="/user/account-statement" class="text-blue-600 hover:underline">View All Transactions</a>
+    <% } else { %>
+      <p>No recent transactions.</p>
+    <% } %>
+  </div>
+</div>

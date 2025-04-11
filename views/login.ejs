@@ -1,0 +1,20 @@
+<!-- views/login.ejs -->
+<div class="max-w-md mx-auto bg-white p-6 rounded shadow-md">
+  <h2 class="text-2xl font-semibold mb-4">Login to OnlineBank</h2>
+  <form action="/login" method="POST" class="space-y-4">
+    <div>
+      <label class="block font-medium mb-1">User ID</label>
+      <input type="text" name="userId" required class="w-full border px-3 py-2" />
+    </div>
+    <div>
+      <label class="block font-medium mb-1">Password</label>
+      <input type="password" name="password" required class="w-full border px-3 py-2" />
+    </div>
+    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Login</button>
+  </form>
+  <div class="mt-4 text-sm flex justify-between">
+    <a href="/forgot-userid" class="text-blue-600 hover:underline">Forgot User ID?</a>
+    <a href="/forgot-password" class="text-blue-600 hover:underline">Forgot Password?</a>
+  </div>
+  <!-- Optionally, include a message for account locked (or handled via redirect to accountLocked page) -->
+</div>

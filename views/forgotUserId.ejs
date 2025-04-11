@@ -1,0 +1,17 @@
+<!-- views/forgotUserId.ejs -->
+<div class="max-w-md mx-auto bg-white p-6 mt-8 rounded shadow-md">
+    <h2 class="text-2xl font-semibold mb-4">Forgot User ID</h2>
+    <form action="/forgot-userid" method="POST" class="space-y-4">
+      <div>
+        <label class="block font-medium mb-1">Account Number</label>
+        <input type="text" name="accountNumber" required class="w-full border px-3 py-2" placeholder="Enter your account number" />
+      </div>
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+        Send OTP
+      </button>
+    </form>
+    <p class="mt-4 text-sm text-gray-600">
+      An OTP will be sent to your registered email to retrieve your User ID.
+    </p>
+  </div>
+  

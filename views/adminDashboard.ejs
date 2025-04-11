@@ -1,0 +1,36 @@
+<!-- views/adminDashboard.ejs -->
+<h2 class="text-2xl font-semibold mb-4">Pending Account Requests</h2>
+<table class="min-w-full bg-white">
+  <thead>
+    <tr class="bg-gray-200">
+      <th class="px-4 py-2 text-left">Name</th>
+      <th class="px-4 py-2 text-left">Email</th>
+      <th class="px-4 py-2 text-left">Phone</th>
+      <th class="px-4 py-2 text-left">Request Date</th>
+      <th class="px-4 py-2 text-center">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% pendingAccounts.forEach(acc => { %>
+      <tr>
+        <td class="px-4 py-2"><%= acc.name %></td>
+        <td class="px-4 py-2"><%= acc.email %></td>
+        <td class="px-4 py-2"><%= acc.phone %></td>
+        <td class="px-4 py-2"><%= acc.createdAt.toLocaleDateString() %></td>
+        <td class="px-4 py-2 text-center">
+          <form action="/admin/approve/<%= acc._id %>" method="POST" class="inline">
+            <button type="submit" class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700">Approve</button>
+          </form>
+          <form action="/admin/reject/<%= acc._id %>" method="POST" class="inline">
+            <button type="submit" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">Reject</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+    <% if (pendingAccounts.length === 0) { %>
+      <tr>
+        <td colspan="5" class="px-4 py-6 text-center text-gray-500">No pending account requests.</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>

@@ -1,0 +1,37 @@
+<!-- views/openAccount.ejs -->
+<div class="max-w-lg mx-auto bg-white p-6 rounded shadow-md">
+  <h2 class="text-2xl font-semibold mb-4">Open a New Account</h2>
+  <form action="/open-account" method="POST" class="grid grid-cols-2 gap-4">
+    <div class="col-span-2">
+      <label class="block font-medium mb-1">Full Name</label>
+      <input type="text" name="name" required class="w-full border px-3 py-2" />
+    </div>
+    <div>
+      <label class="block font-medium mb-1">Email</label>
+      <input type="email" name="email" required class="w-full border px-3 py-2" />
+    </div>
+    <div>
+      <label class="block font-medium mb-1">Phone</label>
+      <input type="text" name="phone" required class="w-full border px-3 py-2" />
+    </div>
+    <div class="col-span-2">
+      <label class="block font-medium mb-1">Address</label>
+      <textarea name="address" class="w-full border px-3 py-2"></textarea>
+    </div>
+    <div>
+      <label class="block font-medium mb-1">Date of Birth</label>
+      <input type="date" name="dob" class="w-full border px-3 py-2" />
+    </div>
+    <div>
+      <label class="block font-medium mb-1">Aadhar Number</label>
+      <input type="text" name="aadhar" class="w-full border px-3 py-2" />
+    </div>
+    <div class="col-span-2">
+      <label class="block font-medium mb-1">Occupation</label>
+      <input type="text" name="occupation" class="w-full border px-3 py-2" />
+    </div>
+    <div class="col-span-2 text-center mt-4">
+      <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Submit Request</button>
+    </div>
+  </form>
+</div>

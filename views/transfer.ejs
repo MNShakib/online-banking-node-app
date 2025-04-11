@@ -1,0 +1,40 @@
+<!-- views/transfer.ejs -->
+<div class="max-w-md mx-auto bg-white p-6 rounded shadow-md">
+  <h2 class="text-2xl font-semibold mb-4">Fund Transfer</h2>
+  <form action="/user/transfer" method="POST" class="space-y-4">
+    <div>
+      <label class="block font-medium mb-1">From Account</label>
+      <!-- Display user's own account number (read-only) -->
+      <input type="text" value="<%= user.accountNumber %>" disabled class="w-full border px-3 py-2 bg-gray-100" />
+    </div>
+    <div>
+      <label class="block font-medium mb-1">To Account</label>
+      <% if (payees.length > 0) { %>
+        <select name="beneficiaryAccount" class="w-full border px-3 py-2 mb-2">
+          <option value="">-- Select a Saved Payee --</option>
+          <% payees.forEach(p => { %>
+            <option value="<%= p.accountNumber %>"><%= p.name %> - <%= p.accountNumber %></option>
+          <% }) %>
+        </select>
+        <div class="text-sm text-gray-500 mb-2">Or enter account number below:</div>
+      <% } %>
+      <input type="text" name="beneficiaryAccount" placeholder="Beneficiary Account Number" class="w-full border px-3 py-2" />
+    </div>
+    <div>
+      <label class="block font-medium mb-1">Amount (₹)</label>
+      <input type="number" step="0.01" name="amount" required class="w-full border px-3 py-2" />
+    </div>
+    <div>
+      <label class="block font-medium mb-1">Transfer Mode</label>
+      <select name="mode" required class="w-full border px-3 py-2">
+        <option value="NEFT">NEFT</option>
+        <option value="RTGS">RTGS</option>
+        <option value="IMPS">IMPS</option>
+      </select>
+    </div>
+    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded">Transfer Now</button>
+  </form>
+  <div class="mt-4 text-sm">
+    <a href="/user/add-payee" class="text-blue-600 hover:underline">Add a new payee</a>
+  </div>
+</div>

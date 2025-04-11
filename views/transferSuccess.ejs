@@ -1,0 +1,8 @@
+<!-- views/transferSuccess.ejs -->
+<div class="max-w-md mx-auto bg-white p-6 mt-10 text-center rounded shadow">
+  <h2 class="text-2xl font-semibold mb-4 text-green-600">Transfer Successful</h2>
+  <p class="mb-2">You have successfully transferred ₹<%= transaction.amount.toFixed(2) %> to account <%= transaction.toAccount %> via <%= transaction.mode %>.</p>
+  <p class="mb-2">Transaction Date: <%= new Date(transaction.date).toLocaleString() %></p>
+  <p class="mb-4">Transaction Reference ID: <%= transaction._id %></p>
+  <a href="/user/dashboard" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Back to Dashboard</a>
+</div>

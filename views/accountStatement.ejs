@@ -1,0 +1,38 @@
+<!-- views/accountStatement.ejs -->
+<h2 class="text-2xl font-semibold mb-4">Account Statement</h2>
+<form action="/user/account-statement" method="POST" class="flex items-center space-x-4 mb-4">
+  <div>
+    <label class="font-medium mr-1">From:</label>
+    <input type="date" name="fromDate" class="border px-2 py-1">
+  </div>
+  <div>
+    <label class="font-medium mr-1">To:</label>
+    <input type="date" name="toDate" class="border px-2 py-1">
+  </div>
+  <button type="submit" class="bg-gray-700 text-white px-3 py-1 rounded">Filter</button>
+</form>
+<% if (transactions !== null) { %>
+  <table class="min-w-full bg-white">
+    <thead>
+      <tr class="bg-gray-200">
+        <th class="px-4 py-2 text-left">Date</th>
+        <th class="px-4 py-2 text-left">Description</th>
+        <th class="px-4 py-2 text-right">Amount (₹)</th>
+        <th class="px-4 py-2 text-left">Mode</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% transactions.forEach(txn => { %>
+        <tr>
+          <td class="px-4 py-2"><%= new Date(txn.date).toLocaleDateString() %></td>
+          <td class="px-4 py-2">Transfer to <%= txn.toAccount %></td>
+          <td class="px-4 py-2 text-right"><%= txn.amount.toFixed(2) %></td>
+          <td class="px-4 py-2"><%= txn.mode %></td>
+        </tr>
+      <% }) %>
+      <% if (transactions.length === 0) { %>
+        <tr><td colspan="4" class="px-4 py-2 text-center text-gray-500">No transactions in this period.</td></tr>
+      <% } %>
+    </tbody>
+  </table>
+<% } %>
